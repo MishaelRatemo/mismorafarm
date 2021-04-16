@@ -19,7 +19,7 @@ if (isset($_POST['place_order'])){
 
         if ($q_result){
             echo 'Order placed';
-            //header('Location:../index1.php');
+            //header('Location:../index.php');
         }else{
             echo 'Order NOT Placed'.mysqli_error($connect);
         }

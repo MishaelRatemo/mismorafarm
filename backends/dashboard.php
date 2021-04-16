@@ -28,7 +28,7 @@ require_once '../includes/config.php';
 <body>
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-3  text-white">
+        <div class="col-3  text-white bg-success" >
             <!--<div class="row" style="background-size: cover; background:  url(../images/logo.PNG);">
                 <div class="col">
                     <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -42,13 +42,13 @@ require_once '../includes/config.php';
             </div>-->
             <div class="b-example-divider"></div>
 
-            <div class="p-3 bg-dark text-white" >
+            <div class="p-3 bg-success text-white" >
                 <a href="#" class="d-flex text-white align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                     <span class="fs-5 fw-bolder"> Admin Dashboard</span>
                 </a>
                 <ul class="list-unstyled ps-0">
                     <li class="mb-1 " >
-                        <button class="btn btn-toggle  text-white  align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                        <button class="btn   text-white  align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                             Home
                         </button>
                         <div class="dropdown bg-light show" id="home-collapse">
@@ -73,7 +73,7 @@ require_once '../includes/config.php';
                         </div>
                     </li>
                     <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                        <button class="btn btn-toggle text-white align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
                             Orders
                         </button>
                         <div class="collapse" id="orders-collapse">
@@ -106,8 +106,8 @@ require_once '../includes/config.php';
                 </div>
 
             </div>
-
-            <div>
+           <!-- ###### SYSTEM USERS####-->
+            <div class="row">
                <!-- // CONTENT-->
                <!-- <div class="row">
                 <p>
@@ -139,33 +139,33 @@ require_once '../includes/config.php';
                 $count=mysqli_num_rows($result);
                 if ($count>0)
                 {
-                    ?>
-                    <table class='table table-striped  table-hover'>
-                        <thead class='table-dark'>
-                            <tr><th colspan='14'><h2 CLASS='text-center fw-bolder' >SYSTEM USERS</h2></th></tr>
-                            <tr>
-                                <th>NO# </th>
-                                <th>First Name</th>
-                                <th>Surname</th>
-                                <th>Address</th>
-                                <th>Mobile</th>
-                                <th>Email</th>
-                                <th>User Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+
+                   echo "<table class='table table-striped  table-hover'>";
+                       echo "<thead class='table-dark'>";
+                            echo "<tr><th colspan='14'><h2 CLASS='text-center fw-bolder' >SYSTEM USERS</h2></th></tr>";
+                            echo"<tr>";
+                                echo "<th>NO# </th>";
+                                echo "<th>First Name</th>";
+                                echo "<th>Surname</th>";
+                                echo "<th>Address</th>";
+                                echo "<th>Mobile</th>";
+                                echo "<th>Email</th>";
+                                echo "<th>User Type</th>";
+                            echo "</tr>";
+                        echo "</thead>";
+                        echo "<tbody>";
+
                             while ($row=mysqli_fetch_array($result))
-                            { ?>
-                                <tr>
-                                    <td> <?php $row['id'] ?></td>
-                                    <td><?php $row['first_name'] ?></td>
-                                    <td> <?php $row['surname'] ?></td>
-                                    <td> <?php $row['address'] ?></td>
-                                    <td> <?php $row['mobile_num'] ?></td>
-                                    <td> <?php $row['email'] ?></td>
-                                    <td> <?php $row['user_type'] ?></td>
-                                </tr>
+                            {
+                               echo "<tr>";
+                                    echo "<td>".$row['id'];"</td>";
+                                    echo "<td>".$row['first_name'];"</td>";
+                                    echo "<td>".$row['surname'];"</td>";
+                                    echo "<td> ".$row['address'] ;"</td>";
+                                    echo "<td>" .$row['mobile_num'] ;"</td>";
+                                    echo "<td>" .$row['email'] ;"</td>";
+                                    echo "<td> ".$row['user_type'] ;"</td>";
+                                echo"</tr>";?>
 
                                 <?php
                             }
@@ -180,7 +180,7 @@ require_once '../includes/config.php';
                 ?>
             </div>
             <hr>
-            <!--#############-->
+            <!--############# PRODUCTS  ####-->
             <div>
                 <?php
                 //select query
@@ -190,41 +190,95 @@ require_once '../includes/config.php';
                 if ($result) {
                     if (mysqli_num_rows($result)){
 
-                        ?>
-                        <table class='table table-dark  table-hover'>
-                            <thead class='table-info'>
-                            <tr><th colspan='14'><h2 CLASS='text-center fw-bolder' >Products</h2></th></tr>
-                            <tr>
-                                <th>NO# </th>
-                                <th>Product Name</th>
-                                <th>Price</th>
-                                <th>Image</th>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
+                        echo "<table class='table table-dark  table-hover'>";
+                         echo "  <thead class='table-info'>";
+                          echo " <tr><th colspan='14'><h2 CLASS='text-center fw-bolder' >Products</h2></th></tr>";
+                          echo " <tr>";
+                               echo "<th>NO# </th>";
+                                echo "<th>Product Name</th>";
+                                echo "<th>Price</th>";
+                                echo "<th>Image</th>";
+
+                            echo "</tr>";
+                            echo "</thead>";
+                            echo "<tbody>";
+
                             while ($row=mysqli_fetch_array($result))
-                            { ?>
-                                <tr>
-                                    <td> <?php $row['id'] ?></td>
-                                    <td><?php $row['prod_name'] ?></td>
-                                    <td> <?php $row['price'] ?></td>
+                            {
+                                echo "<tr>";
+                                    echo "<td> ".$row['id'];"</td>";
+                                    echo "<td>".$row['prod_name'];"</td>";
+                                    echo "<td>" . $row['price']; "</td>";
+                                    ?>
                                     <td> <img src="../images/<?php echo $row["prod_image"]; ?>" class="img-responsive" style="width: 80px; height: 60px; border-radius: 50%" /></td>
+                                    <?php
+                                echo "</tr>";
 
-                                </tr>
-
-                                <?php
                             }
-                            ?>
-                            </tbody>
-                        </table>
 
-                        <?php
+                            echo "</tbody>";
+                        echo "</table>";
+
+
                     }else{
                         echo 'No record found';
                     }
                 }
+                ?>
+
+            </div>
+            <!--####### FEED BACKS ####-->
+
+            <div>
+
+                <?php
+                $sql = "SELECT * FROM `feedback_table`";
+                $result = mysqli_query($connect, $sql);
+                $count=mysqli_num_rows($result);
+                if ($result) {
+                    if (mysqli_num_rows($result)){
+
+
+                        echo "<table class='table table-dark  table-hover'>";
+                                echo "  <thead class='table-info'>";
+                                    echo " <tr><th colspan='14'><h2 CLASS='text-center fw-bolder' >Feed backs from visitors</h2></th></tr>";
+                                    echo " <tr>";
+                                        echo "<th>Feedback Id# </th>";
+                                        echo "<th>Sender'Name</th>";
+                                        echo "<th>Sende Mail</th>";
+                                        echo "<th>Sender Mobile</th>";
+                                        echo "<th>Comment</th>";
+                                        echo "<th>Time Posted</th>";
+                                    echo " </tr>";
+                                echo " </thead>";
+                                echo" <tbody>";
+
+                                    while ($row=mysqli_fetch_array($result))
+                                    {
+                                        echo "<tr>";
+                                            echo "<td> ".$row['feed_id'];"</td>";
+                                            echo "<td>".$row['fname'].'  '.$row['sname'];"</td>";
+                                            echo "<td>" . $row['email']; "</td>";
+                                            echo "<td>" . $row['mobile']; "</td>";
+                                            echo "<td>" . $row['feedback']; "</td>";
+                                            echo "<td>" . $row['time_posted']; "</td>";
+
+                                        echo "</tr>";
+
+                                    }
+
+                                echo "</tbody>";
+                        echo "</table>";
+
+
+                    }else{
+                        echo 'No record found';
+                    }
+                }
+                ?>
+
+
                 ?>
 
             </div>

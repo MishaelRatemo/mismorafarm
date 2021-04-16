@@ -7,7 +7,7 @@ define("DATABASE",'mismora_farm');
 $connect=mysqli_connect(SERVER,USERNAME,PASSWORD,DATABASE);
 if ($connect==true){
     //echo 'Connected';
-    // header('Location:../index1.php');
+    // header('Location:../index.php');
 }else{
     echo 'Error: Not connected'.mysqli_connect_error();
 }

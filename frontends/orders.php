@@ -41,22 +41,41 @@ $customer=$sub_totals=$item_id=$item_name=$item_price=$item_quantity='';
             $_SESSION["shop_cart"][0] = $item_array;
 
         }
+        if (isset($_POST['place_order'])) {
+            if (isset($_SESSION['user'])) {
 
+                $customer = $_POST[$_SESSION['user']];
+
+                $sql_query = "INSERT INTO `orders_tble`(`customer_mail`, `item_id`, `item_name`, `item_price`, `item_qty`, `totals`)
+                                        VALUES ('$customer','$item_id','$item_name','$item_price','$item_quantity','$sub_totals')";
+
+                $q_result = mysqli_query($connect, $sql_query);
+
+                if ($q_result) {
+                    echo 'Order placed';
+                    //header('Location:../index.php');
+                } else {
+                    echo 'Order NOT Placed' . mysqli_error($connect);
+                }
+
+
+            }
+
+        }
     }
-if (isset($_POST['place_order'])) {
+/*if (isset($_POST['place_order'])) {
     if (isset($_SESSION['user'])) {
 
         $customer = $_POST[$_SESSION['user']];
 
-        /*$sql_query = "INSERT INTO `orders_tble`(`customer_mail`, `item_id`, `item_name`, `item_price`, `item_qty`, `totals`)
-                                        VALUES ('$customer','$item_id','$item_name','$item_price','$item_quantity','$sub_totals')";*/
-        $sql_query = "INSERT INTO `orders_tble`(`customer_mail`) 
-                                        VALUES ('$customer')";
+        $sql_query = "INSERT INTO `orders_tble`(`customer_mail`, `item_id`, `item_name`, `item_price`, `item_qty`, `totals`)
+                                        VALUES ('$customer','$item_id','$item_name','$item_price','$item_quantity','$sub_totals')";
+
         $q_result = mysqli_query($connect, $sql_query);
 
         if ($q_result) {
             echo 'Order placed';
-            //header('Location:../index1.php');
+            //header('Location:../index.php');
         } else {
             echo 'Order NOT Placed' . mysqli_error($connect);
         }
@@ -64,7 +83,7 @@ if (isset($_POST['place_order'])) {
 
     }
 
-}
+}*/
     if(isset($_GET["action"]))
     {
         if($_GET["action"] == "delete")
@@ -101,11 +120,15 @@ if (isset($_POST['place_order'])) {
         <link href="../fontawesome/css/solid.css" rel="stylesheet">
 
 	</head>
-	<body>
-		<div class="container bg-success">
-			<br />
-			<h3 align="center" class="bg-light">Mismora  - Home of Original Foods</a></h3><br />
-			<br />
+	<body class="bg-success">
+		<div class="container ">
+            <div class="bg-light p-2">
+                <div><a href="../backends/logout.php" class="btn text-decoration-none fw-bolder p-4 btn-warning mb-2 " style="float: right; clear: both;">Logout &nbsp;<i class="fa fa-sign-out-alt"></i></a></div>
+                <br />
+                <h3 align="center" class="bg-light">Mismora  - Home of Original Foods</a></h3><br />
+                <h4 class="text-center text-success">You can make an order Below</h4>
+            </div>
+            <br>
             <div class="col-12">
                 <div class="row">
 
@@ -152,7 +175,7 @@ if (isset($_POST['place_order'])) {
 
             <h3>Order Details</h3>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered table-success">
                     <tr>
                         <th width="40%">Item Name</th>
                         <th width="10%">Quantity</th>

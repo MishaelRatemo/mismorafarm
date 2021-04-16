@@ -70,9 +70,15 @@ include '../includes/loginhander.php';
                     </div>
 
                 </div>
-                <p class="text-center" style="color: #bb2d3b;">
-                    <?php echo $msg; ?>
-                </p>
+                <h3 class="text-center" style="color: #bb2d3b;">
+
+                    <?php
+                    if (isset($_SESSION['loginerr'])){
+                        echo $_SESSION['loginerr'];
+                        unset($_SESSION['error']);
+                    }
+                    ?>
+                </h3>
 
                 <div class="row ">
                     <div >
@@ -82,7 +88,7 @@ include '../includes/loginhander.php';
 
                 <div class="row mt-1">
                     <div >
-                        <h5>Don't have an account? &nbsp;<a href="../index1.php" style="text-decoration: none; color: #b6d4fe">Sign up</a></h5>
+                        <h5>Don't have an account? &nbsp;<a href="../index.php" style="text-decoration: none; color: #b6d4fe">Sign up</a></h5>
                     </div>
                 </div>
             </div>

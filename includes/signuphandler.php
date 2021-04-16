@@ -81,7 +81,7 @@ if (isset($_POST['signup'])){
 
     if (mysqli_num_rows($check_exist)>0){
         $_SESSION['error']="Failed to Register: EMAIL ALREADY EXISTS!! Use different ";
-        header('Location:../index1.php');
+        header('Location:../index.php');
 
     }else{
 
@@ -92,7 +92,7 @@ if (isset($_POST['signup'])){
         if ($result){
             $_SESSION['status']="Registered Successfully !! ";
             //echo "<script> alert('Registered Successfully !!') ; </script>      ";
-            header('Location:../index1.php');
+            header('Location:../index.php');
         }else{
             echo "Failed to Insert data $sql".mysqli_error($connect);
         }

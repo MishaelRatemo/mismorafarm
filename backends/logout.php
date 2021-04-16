@@ -9,6 +9,6 @@ session_destroy();
 
 
 //redirect
-header('Location:../index1.php');
+header('Location:../index.php');
 
 exit;
